@@ -70,7 +70,8 @@ def run_ppo(config) -> None:
         # this is for local ray cluster
         ray.init(
             runtime_env={"env_vars": {"TOKENIZERS_PARALLELISM": "true", "NCCL_DEBUG": "WARN", "VLLM_LOGGING_LEVEL": "WARN"}},
-            num_cpus=config.ray_init.num_cpus,
+            # num_cpus=config.ray_init.num_cpus,
+            num_cpus=8,
         )
 
     runner = TaskRunner.remote()
